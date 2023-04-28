@@ -20,14 +20,22 @@ fn main() {
 }
 
 fn pretty_print_player(player: Player, numeral_mode: bool) {
+    let width: usize = 12;
     match numeral_mode {
-        true => println!("{}\t\t{}\t\t{}", player.name, player.left, player.right),
+        true => println!(
+            "{:width$}\t{}\t{}",
+            player.name,
+            player.left,
+            player.right,
+            width = width
+        ),
         false => {
             println!(
-                "{}\t\t{}\t\t{}",
+                "{:width$}\t{}\t{}",
                 player.name,
                 "|".repeat(player.left),
                 "|".repeat(player.right),
+                width = width,
             )
         }
     }
