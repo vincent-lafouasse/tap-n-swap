@@ -1,3 +1,5 @@
+use std::fmt;
+
 #[derive(Debug, Copy, Clone)]
 pub struct Player {
     pub name: &'static str,
@@ -58,5 +60,19 @@ impl Default for Player {
             right: 1,
             name: "JR",
         }
+    }
+}
+
+impl fmt::Display for Player {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let width: usize = 12;
+        write!(
+            f,
+            "{:width$}\t{}\t{}",
+            self.name,
+            "|".repeat(self.left),
+            "|".repeat(self.right),
+            width = width,
+        )
     }
 }

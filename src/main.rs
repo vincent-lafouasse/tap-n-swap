@@ -19,31 +19,8 @@ fn main() {
     print_state(player, opponent);
 }
 
-fn pretty_print_player(player: Player, numeral_mode: bool) {
-    let width: usize = 12;
-    match numeral_mode {
-        true => println!(
-            "{:width$}\t{}\t{}",
-            player.name,
-            player.left,
-            player.right,
-            width = width
-        ),
-        false => {
-            println!(
-                "{:width$}\t{}\t{}",
-                player.name,
-                "|".repeat(player.left),
-                "|".repeat(player.right),
-                width = width,
-            )
-        }
-    }
-}
-
 fn print_state(player: Player, opponent: Player) {
-    let numeral_mode = false;
-    pretty_print_player(opponent, numeral_mode);
-    pretty_print_player(player, numeral_mode);
+    println!("{opponent}");
+    println!("{player}");
     println!();
 }
