@@ -7,14 +7,29 @@ pub struct Player {
     pub right: usize,
 }
 
+#[derive(Debug, Copy, Clone)]
 pub enum Side {
     Left,
     Right,
 }
 
+impl Side {
+    pub fn other(&self) -> Side {
+        match self {
+            Side::Left => Side::Right,
+            Side::Right => Side::Left,
+        }
+    }
+}
+
 pub fn hit(player: Player, opponent: &mut Player, from: Side, to: Side) {
     let amount: usize = player.get_hand(from);
     opponent.is_hit(to, amount);
+    println!(
+        "{} hit {}'s {to} hand with their {from} hand",
+        player.name, opponent.name
+    );
+    println!("{amount} was given");
 }
 
 impl Player {
@@ -73,6 +88,20 @@ impl fmt::Display for Player {
             "|".repeat(self.left),
             "|".repeat(self.right),
             width = width,
+        )
+    }
+}
+
+impl fmt::Display for Side {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let width: usize = 12;
+        write!(
+            f,
+            "{}",
+            match self {
+                Side::Left => "Left",
+                Side::Right => "Right",
+            }
         )
     }
 }
