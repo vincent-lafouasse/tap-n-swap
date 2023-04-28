@@ -1,11 +1,25 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
 
-mod hands;
-
-use crate::hands::Hands;
-
 fn main() {
-    let hand = Hands::new();
-    println!("{:?}", hand);
+    let player = Player::new();
+    println!("{:?}", player);
+}
+
+#[derive(Debug)]
+pub struct Player {
+    left: usize,
+    right: usize,
+}
+
+impl Player {
+    pub fn new() -> Self {
+        Player { left: 5, right: 5 }
+    }
+}
+
+impl Default for Player {
+    fn default() -> Self {
+        Self::new()
+    }
 }
