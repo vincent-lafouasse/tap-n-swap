@@ -4,9 +4,8 @@
 mod player;
 
 use player::hit;
-
-use crate::player::Player;
-use crate::player::Side;
+use player::Player;
+use player::Side;
 
 fn main() {
     let mut player_1: Player = Player::new();
