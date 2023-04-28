@@ -8,15 +8,15 @@ use player::Player;
 use player::Side;
 
 fn main() {
-    let mut player_1: Player = Player::new("Alice");
-    let mut player_2: Player = Player::new("Bob");
-    print_state(player_1, player_2);
+    let mut player: Player = Player::new("JR");
+    let mut opponent: Player = Player::new("The World");
+    print_state(player, opponent);
 
-    hit(player_1, &mut player_2, Side::Right, Side::Left);
-    print_state(player_1, player_2);
+    hit(player, &mut opponent, Side::Right, Side::Left);
+    print_state(player, opponent);
 
-    hit(player_2, &mut player_1, Side::Left, Side::Right);
-    print_state(player_1, player_2);
+    hit(opponent, &mut player, Side::Left, Side::Right);
+    print_state(player, opponent);
 }
 
 fn pretty_print_player(player: Player, numeral_mode: bool) {
@@ -33,9 +33,9 @@ fn pretty_print_player(player: Player, numeral_mode: bool) {
     }
 }
 
-fn print_state(player1: Player, player2: Player) {
+fn print_state(player: Player, opponent: Player) {
     let numeral_mode = false;
-    pretty_print_player(player1, numeral_mode);
-    pretty_print_player(player2, numeral_mode);
+    pretty_print_player(opponent, numeral_mode);
+    pretty_print_player(player, numeral_mode);
     println!();
 }
