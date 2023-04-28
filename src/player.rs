@@ -1,5 +1,6 @@
 #[derive(Debug, Copy, Clone)]
 pub struct Player {
+    name: &'static str,
     left: usize,
     right: usize,
 }
@@ -15,8 +16,12 @@ pub fn hit(player: Player, opponent: &mut Player, from: Side, to: Side) {
 }
 
 impl Player {
-    pub const fn new() -> Self {
-        Player { left: 1, right: 1 }
+    pub const fn new(name: &'static str) -> Self {
+        Player {
+            left: 1,
+            right: 1,
+            name,
+        }
     }
 
     pub fn is_hit(&mut self, side: Side, amount: usize) {
@@ -48,6 +53,10 @@ impl Player {
 
 impl Default for Player {
     fn default() -> Self {
-        Self::new()
+        Self {
+            left: 1,
+            right: 1,
+            name: "JR",
+        }
     }
 }

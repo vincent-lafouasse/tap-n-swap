@@ -8,8 +8,8 @@ use player::Player;
 use player::Side;
 
 fn main() {
-    let mut player_1: Player = Player::new();
-    let mut player_2: Player = Player::new();
+    let mut player_1: Player = Player::new("Alice");
+    let mut player_2: Player = Player::new("Bob");
     print_state(player_1, player_2);
 
     hit(player_1, &mut player_2, Side::Right, Side::Left);
