@@ -19,8 +19,23 @@ fn main() {
     print_state(player_1, player_2);
 }
 
+fn pretty_print_player(player: Player, numeral_mode: bool) {
+    match numeral_mode {
+        true => println!("{}\t\t{}\t\t{}", player.name, player.left, player.right),
+        false => {
+            println!(
+                "{}\t\t{}\t\t{}",
+                player.name,
+                "|".repeat(player.left),
+                "|".repeat(player.right),
+            )
+        }
+    }
+}
+
 fn print_state(player1: Player, player2: Player) {
-    println!("{:?}", player1);
-    println!("{:?}", player2);
+    let numeral_mode = false;
+    pretty_print_player(player1, numeral_mode);
+    pretty_print_player(player2, numeral_mode);
     println!();
 }

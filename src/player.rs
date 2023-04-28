@@ -1,8 +1,8 @@
 #[derive(Debug, Copy, Clone)]
 pub struct Player {
-    name: &'static str,
-    left: usize,
-    right: usize,
+    pub name: &'static str,
+    pub left: usize,
+    pub right: usize,
 }
 
 pub enum Side {
