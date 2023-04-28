@@ -3,6 +3,8 @@
 
 mod player;
 
+use player::hit;
+
 use crate::player::Player;
 use crate::player::Side;
 
@@ -11,10 +13,10 @@ fn main() {
     let mut player_2: Player = Player::new();
     print_state(player_1, player_2);
 
-    player_2.is_hit(Side::Left, player_1.get_hand(Side::Right));
+    hit(player_1, &mut player_2, Side::Right, Side::Left);
     print_state(player_1, player_2);
 
-    player_1.is_hit(Side::Right, player_2.get_hand(Side::Left));
+    hit(player_2, &mut player_1, Side::Left, Side::Right);
     print_state(player_1, player_2);
 }
 

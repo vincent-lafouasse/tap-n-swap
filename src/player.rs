@@ -9,6 +9,11 @@ pub enum Side {
     Right,
 }
 
+pub fn hit(player: Player, opponent: &mut Player, from: Side, to: Side) {
+    let amount: usize = player.get_hand(from);
+    opponent.is_hit(to, amount);
+}
+
 impl Player {
     pub const fn new() -> Self {
         Player { left: 1, right: 1 }
